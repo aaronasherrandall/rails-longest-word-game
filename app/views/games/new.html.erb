@@ -1,0 +1,23 @@
+<!-- The new action will be used to display a new random grid and a form.
+The form will be submitted (with POST) to the score action. -->
+<h1>New Game</h1>
+
+<!-- Show the random letters -->
+<p>Random letters: <%= @letters.join(' ') %></p>
+
+
+<form action="/score" method="POST" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters.join %>
+
+  <!-- Input field for user to type in a word -->
+  <div>
+    <label for="word">Type a word:</label>
+    <input type="text" name="word" id="word" />
+  </div>
+
+  <!-- Submit button -->
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+</form>
